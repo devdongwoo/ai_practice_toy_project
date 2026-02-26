@@ -38,6 +38,9 @@ pnpm dev
 7. MD다운로드를 하면 본문 내용을 markdown으로 다운
 8. HTML다운로드를 하면 본문 내용을 html로 다운
 
+9. 경로를 잘못입력할때 커스텀 404 페이지 제작
+>![img_6.png](img_6.png)
+
 ---
 ## 디렉토리 구조
 ```
@@ -60,6 +63,5 @@ src
 ├─store                       // 다크모드를 위해 사용하는 전역상태관리
 └─types                       // blog.ts, toastpopup.ts interface type이면서 index.ts에 묶어놓아 해당 타입이 
                               // 필요한곳에 사용할때 간략하게 import 문을 작성하기 위해서 index.ts에 묶어놓음
-```
-예시
+``` 
 >![img_5.png](img_5.png)
