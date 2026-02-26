@@ -31,14 +31,14 @@ https://ai-practice-toy-project.vercel.app/
 
 ---
 ## 주요기능
-![img_1.png](img_1.png)
+![img_1.png](public/img_1.png)
 
 1. 다크모드로써 CSS 애니메이션을 줘서 바꿔질때 시각적으로 변화를 줬음
->![img_2.png](img_2.png)
+>![img_2.png](public/img_2.png)
 2. 주제 값을 넣지 않을경우 토스트 팝업이 나오게 제작
->![img_3.png](img_3.png)
+>![img_3.png](public/img_3.png)
 3. 키워드 값을 넣지 않을경우 토스트 팝업이 나오게 제작
->![img_4.png](img_4.png)
+>![img_4.png](public/img_4.png)
 4. 스타일 기본값은 튜토리얼로 3개 값중 하나만 선택 가능하도록 제작
 5. 모든 값을 넣고 `생성하기` 버튼을 누르면 글생성 본문이 나옴
 > 주제, 해시태그, SEO메타 각 값들이 나온 섹션을 클릭시 값이 복사 됨
@@ -47,7 +47,7 @@ https://ai-practice-toy-project.vercel.app/
 8. HTML다운로드를 하면 본문 내용을 html로 다운
 
 9. 경로를 잘못입력할때 커스텀 404 페이지 제작
->![img_6.png](img_6.png)
+>![img_6.png](public/img_6.png)
 
 ---
 ## 디렉토리 구조
@@ -72,4 +72,4 @@ src
 └─types                       // blog.ts, toastpopup.ts interface type이면서 index.ts에 묶어놓아 해당 타입이 
                               // 필요한곳에 사용할때 간략하게 import 문을 작성하기 위해서 index.ts에 묶어놓음
 ``` 
->![img_5.png](img_5.png)
+>![img_5.png](public/img_5.png)
