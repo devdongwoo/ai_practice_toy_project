@@ -66,6 +66,29 @@ export async function POST(req: Request) {
 
     } catch (error: unknown) {
         console.error('Error generating post:', error);
+
+        if (error instanceof OpenAI.APIError) {
+            if (error.status === 429)
+                return NextResponse.json(
+                    { error: "현재 API 토큰 사용 한도를 초과했습니다." },
+                    { status: 429 }
+                );
+
+
+            if (error.code === 'context_length_exceeded')
+                return NextResponse.json(
+                    { error: "입력된 내용이 너무 길어 처리할 수 없습니다. 내용을 줄여주세요." },
+                    { status: 400 }
+                );
+
+
+            return NextResponse.json(
+                { error: `OpenAI 에러: ${error.message}` },
+                { status: error.status || 500 }
+            );
+        }
+
+
         if(error instanceof Error)
             return NextResponse.json(
                 { error: error.message || '글 생성 중 오류가 발생했습니다.' },

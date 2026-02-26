@@ -21,18 +21,21 @@ export default function ContentComponent () {
 
     const [loading, setLoading] = useState(false);
     const [result, setResult] = useState<BlogResponse | null>(null);
-    const [error, setError] = useState("");
+    const [error, setError] = useState(false);
+    const [message, setMessage] = useState("")
     const [active, setActive] = useState(false)
 
     const handlePost = async() => {
         if(!val.topic){
-            setError("※ 주제를 입력해주세요")
+            setMessage("※ 주제를 입력해주세요")
+            setError(true)
             setActive(true)
             return
         }
 
         if(!val.keywords){
-            setError("※ 키워드를 입력해주세요")
+            setMessage("※ 키워드를 입력해주세요")
+            setError(true)
             setActive(true)
             return
         }
@@ -56,11 +59,15 @@ export default function ContentComponent () {
 
             const data = await response.json();
             setResult(data);
-            console.log(data, "data")
-        } catch (err) {
-            setError('글 생성에 실패했습니다. 다시 시도해주세요.');
+        } catch (err: unknown) {
+            if(err instanceof Error){
+                setError(true)
+                setMessage(err.message);
+            }
+        } finally{
+             setLoading(false);
         }
-        setLoading(false);
+
     }
 
 
@@ -69,7 +76,7 @@ export default function ContentComponent () {
     return (
         <section className="top w-full relative">
             {
-                active && <ToastPopup setToast={setActive} message={error} position={"top"} type={error != "" ? "error" : "normal"}/>
+                active && <ToastPopup setToast={setActive} message={message} position={"top"} type={error  ? "error" : "normal"}/>
             }
             <div className="font-semibold text-[18px]">글 스타일</div>
             {
@@ -118,7 +125,7 @@ export default function ContentComponent () {
                     <Button text="블로그 글 생성하기" style="w-[180px] bg-[#3485fa] !p-[10px] rounded-[8px] cursor-pointer text-[#fff]" func={handlePost} />
                 </div>
             </DataSection>
-            <Bottom loading={loading} response={result}/>
+            <Bottom loading={loading} response={result} setActive={setActive} setError={setError} setMessage={setMessage}/>
         </section>
     )
 }

@@ -11,6 +11,8 @@ import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin
 import Prism from 'prismjs';
 import { useDarkModeStore } from "@/store/darkModeStore";
 import {useResize} from "@/hooks/useResize";
+import {RefObject} from "react";
+import { Editor as Edit } from "@toast-ui/react-editor";
 
 const Editor = dynamic(
     () => import('@toast-ui/react-editor').then((m) => m.Editor),
@@ -19,9 +21,10 @@ const Editor = dynamic(
 
 interface ToastUIEditorProps {
     response: BlogResponse;
+    editorRef:  RefObject<Edit | null>
 }
 
-export default function ToastUIEditor({ response }: ToastUIEditorProps) {
+export default function ToastUIEditor({ response, editorRef }: ToastUIEditorProps) {
     const dark = useDarkModeStore(state => state.darkMode);
     const { content } = response;
 
@@ -50,6 +53,7 @@ export default function ToastUIEditor({ response }: ToastUIEditorProps) {
     return (
         <div className="w-full p-4 bg-white dark:bg-zinc-900 rounded-lg">
             <Editor
+                ref={editorRef}
                 key={`${dark}-${previewStyle}`}
                 initialValue={content}
                 previewStyle={previewStyle}

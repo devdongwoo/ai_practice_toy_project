@@ -13,6 +13,7 @@
     "@toast-ui/editor-plugin-code-syntax-highlight": "^3.1.0",
     "@toast-ui/editor-plugin-color-syntax": "^3.1.0",
     "@toast-ui/react-editor": "^3.2.3",
+    "marked": "^17.0.3",
     "next": "16.1.6",
     "openai": "^6.17.0",
     "prismjs": "^1.30.0",

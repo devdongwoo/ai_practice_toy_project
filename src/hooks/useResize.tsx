@@ -6,12 +6,12 @@ export function useResize() {
     const [width, setWidth] = useState(0);
 
     useEffect(() => {
-        const handleResize = () => setWidth(window.innerWidth);
+        const handleResize = () => setWidth(self.innerWidth);
 
         handleResize();
-        window.addEventListener("resize", handleResize);
+        self.addEventListener("resize", handleResize);
 
-        return () => window.removeEventListener("resize", handleResize);
+        return () => self.removeEventListener("resize", handleResize);
     }, []);
 
     return width;
