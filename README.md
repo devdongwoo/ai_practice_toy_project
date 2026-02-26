@@ -10,6 +10,14 @@ npm install -g pnpm -- pnpm 글로벌로 설정
 pnpm i
 pnpm dev
 ```
+
+<strong>제작이유</strong>: 혼자 고민해서 글 쓰는거 보다 AI를 가지고 글을 작성할때<br/>
+시간비용을 최소로 줄일 수 있기 때문에 제작을 하게 되었습니다.
+
+---
+## 배포
+https://ai-practice-toy-project.vercel.app/
+
 ---
 ## 라이브러리
 라이브러리|          사용이유           |
